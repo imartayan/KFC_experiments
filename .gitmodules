@@ -1,0 +1,3 @@
+[submodule "FASTK"]
+	path = FASTK
+	url = https://github.com/thegenemyers/FASTK.git

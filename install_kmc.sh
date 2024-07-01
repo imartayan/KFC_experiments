@@ -28,7 +28,7 @@ fi
 
 set -x
 
-mkdir -p kmc
-cd kmc
-wget -O kmc.tar.gz https://github.com/refresh-bio/KMC/releases/download/v${version}/KMC${version}.${platform}.${arch}.tar.gz
-tar -xf kmc.tar.gz --strip-components 1
+mkdir -p KMC
+cd KMC
+wget -O KMC.tar.gz https://github.com/refresh-bio/KMC/releases/download/v${version}/KMC${version}.${platform}.${arch}.tar.gz
+tar -xf KMC.tar.gz --strip-components 1

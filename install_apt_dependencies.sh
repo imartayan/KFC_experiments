@@ -1,6 +1,14 @@
 #!/bin/bash
-set -euxo pipefail
+set -euo pipefail
 
-sudo apt update
+# https://stackoverflow.com/questions/18215973/how-to-check-if-running-as-root-in-a-bash-script
+sudo="sudo"
+if [ $(id -u) -eq 0 ]; then
+    sudo=""
+fi
 
-sudo apt install -y build-essential cmake git python3 wget
+set -x
+
+${sudo} apt update
+
+${sudo} apt install -y build-essential cmake git python3 wget

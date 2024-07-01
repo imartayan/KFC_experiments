@@ -9,3 +9,4 @@ if [ -f /etc/debian_version ]; then
 fi
 
 bash install_kmc.sh
+bash install_fastk.sh

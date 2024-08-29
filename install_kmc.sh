@@ -32,3 +32,5 @@ mkdir -p KMC
 cd KMC
 wget -O KMC.tar.gz https://github.com/refresh-bio/KMC/releases/download/v${version}/KMC${version}.${platform}.${arch}.tar.gz
 tar -xf KMC.tar.gz --strip-components 1
+
+ulimit -n 2048

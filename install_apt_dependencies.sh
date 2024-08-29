@@ -11,4 +11,4 @@ set -x
 
 ${sudo} apt update
 
-${sudo} apt install -y build-essential cmake git python3 wget
+${sudo} apt install -y build-essential cmake git python3 python3-pandas python3-seaborn wget

@@ -1,6 +1,13 @@
 .DS_Store
 KFC
 KMC
+out
+tmp
+logs
+plots
+*.png
+*.pdf
+*.kmc_*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -1,4 +1,5 @@
 from tools import TOOLS
+from main import DEFAULT_FILE
 import os
 import json
 import pandas as pd
@@ -38,7 +39,7 @@ os.makedirs(PLOT_DIR, exist_ok=True)
 
 plt.figure()
 sns.lineplot(
-    data=DATA,
+    data=DATA[DATA["filename"] == DEFAULT_FILE],
     x="k",
     y="time",
     hue="tool",
@@ -53,7 +54,7 @@ plt.savefig(f"{PLOT_DIR}/plot_time_vs_k.png")
 
 plt.figure()
 sns.lineplot(
-    data=DATA,
+    data=DATA[DATA["filename"] == DEFAULT_FILE],
     x="k",
     y="memory",
     hue="tool",

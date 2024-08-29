@@ -37,7 +37,7 @@ class Tool:
             tool=self.name,
             time=time,
             memory=memory,
-            filename=name,
+            filename=input_file,
             filesize=size,
             **params,
         )

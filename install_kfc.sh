@@ -8,5 +8,6 @@ fi
 set -x
 
 cd KFC
+git pull
 cargo build --release
 cp target/release/kfc .

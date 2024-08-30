@@ -51,7 +51,7 @@ class Tool:
         cmd = self.cmd(input_file, **params)
         if cmd is None:
             return None
-        result = benchmark(cmd, repeat=repeat, timeout=timeout)
+        result = benchmark(*cmd, repeat=repeat, timeout=timeout)
         if result is None:
             print(f"{self.name} failed during execution")
             return None

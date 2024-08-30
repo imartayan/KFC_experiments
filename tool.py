@@ -51,7 +51,11 @@ class Tool:
         cmd = self.cmd(input_file, **params)
         if cmd is None:
             return None
-        time, memory, out, err = benchmark(cmd, repeat=repeat, timeout=timeout)
+        result = benchmark(cmd, repeat=repeat, timeout=timeout)
+        if result is None:
+            print(f"{self.name} failed during execution")
+            return None
+        time, memory, out, err = result
         if self.postprocess is not None:
             time, memory = self.postprocess(time, memory, out, err)
         self.log(input_file, time, memory, **params)
@@ -132,7 +136,7 @@ def benchmark(*commands, repeat=1, timeout=None):
                 total_time += time
                 total_memory = max(total_memory, memory)
             except Exception:
-                return float("inf"), float("inf"), out, err  # fix?
+                return None
     average_time = total_time / repeat
     average_memory = total_memory / repeat
     return average_time, average_memory, out, err

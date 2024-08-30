@@ -61,9 +61,22 @@ def jellyfish_cmd(fasta, **params):
 JELLYFISH = Tool("Jellyfish", jellyfish_cmd)
 
 
+def gerbil_cmd(fasta, **params):
+    k = select_param("k", params, 31)
+    # m = select_param("m", params, 21)
+    t = select_param("threads", params, 1)
+    l = select_param("threshold", params, 2)
+    out = f"out/{basename(fasta)}"
+    return [f"./gerbil/build/gerbil -k {k} -t {t} -l {l} {fasta} tmp {out}"]
+
+
+GERBIL = Tool("Gerbil", gerbil_cmd)
+
+
 TOOLS = [
     KFC,
     KMC,
     FASTK,
     # JELLYFISH,
+    # GERBIL,
 ]

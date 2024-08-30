@@ -45,7 +45,7 @@ def jellyfish_cmd(fasta, **params):
     t = select_param("threads", params, 1)
     s_bf = select_param("bloom_filter_size", params, "1G")
     s_ht = select_param("hash_table_size", params, "10M")
-    out_bc = f"out/{basename(fasta)}_{k}.bc"
+    out_bc = f"out/{basename(fasta)}.bc"
     out = f"out/{basename(fasta)}.jf"
     cmd = []
     if fasta.endswith(".gz"):

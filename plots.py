@@ -15,11 +15,15 @@ MARKERS = {
     "KFC": "o",
     "KMC": "s",
     "FASTK": "^",
+    "Jellyfish": "P",
+    "Gerbil": "*",
 }
 PALETTE = {
     "KFC": "tab:blue",
     "KMC": "tab:green",
     "FASTK": "tab:red",
+    "Jellyfish": "tab:purple",
+    "Gerbil": "tab:orange",
 }
 LABEL = {t: t for t in MARKERS} | {
     "time": "Construction time (in s)",

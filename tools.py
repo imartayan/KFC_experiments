@@ -15,6 +15,7 @@ KFC = Tool("KFC", kfc_cmd)
 def kmc_cmd(fasta, **params):
     k = select_param("k", params, 31)
     if k > 256:
+        print("KMC requires k ≤ 256")
         return None
     t = select_param("threads", params, 1)
     ci = select_param("threshold", params, 2)
@@ -36,8 +37,33 @@ def fastk_cmd(fasta, **params):
 FASTK = Tool("FASTK", fastk_cmd)
 
 
+def jellyfish_cmd(fasta, **params):
+    k = select_param("k", params, 31)
+    if k > 64:
+        print("Jellyfish requires k ≤ 64")
+        return None
+    t = select_param("threads", params, 1)
+    s_bf = select_param("bloom_filter_size", params, "1G")
+    s_ht = select_param("hash_table_size", params, "10M")
+    out_bc = f"out/{basename(fasta)}_{k}.bc"
+    out = f"out/{basename(fasta)}.jf"
+    cmd = []
+    if fasta.endswith(".gz"):
+        unzipped = f"out/{basename(fasta)}.fa"
+        cmd.append(f"gzip -cd {fasta} > {unzipped}")
+        fasta = unzipped
+    return cmd + [
+        f"./jellyfish/bin/jellyfish bc -C -m {k} -s {s_bf} -t {t} {fasta} -o {out_bc} --timing=/dev/stdout",
+        f"./jellyfish/bin/jellyfish count -C -m {k} -s {s_ht} -t {t} --bc {out_bc} {fasta} -o {out} --timing=/dev/stdout",
+    ]
+
+
+JELLYFISH = Tool("Jellyfish", jellyfish_cmd)
+
+
 TOOLS = [
     KFC,
     KMC,
     FASTK,
+    JELLYFISH,
 ]

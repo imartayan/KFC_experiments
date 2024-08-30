@@ -20,7 +20,21 @@ Once this is done, you can build all the tools with
 bash install_all.sh
 ```
 
+If the installation fails, make sure you have the following packages installed on your machine:
+```
+cmake gcc git make python3 python3-pandas python3-seaborn wget
+```
+On Debian-based distributions, you can install them with
+```sh
+bash install_apt_dependencies.sh
+```
+
 ## Running the experiments
+
+On MacOS, you will first need to increase the limit of temporary files to run KMC properly:
+```sh
+ulimit -n 2048
+```
 
 You can run all the experiments with
 ```sh

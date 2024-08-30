@@ -64,7 +64,7 @@ def select_param(key, params, default=None):
         print(f"Using {key}={default} by default")
         return default
     else:
-        raise Exception(f"{key} is mossing from params")
+        raise Exception(f"{key} is missing from params")
 
 
 def basename(filename):

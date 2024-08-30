@@ -61,6 +61,7 @@ def select_param(key, params, default=None):
     if key in params:
         return params[key]
     elif default is not None:
+        print(f"Using {key}={default} by default")
         return default
     else:
         raise Exception(f"{key} is mossing from params")

@@ -17,6 +17,7 @@ MARKERS = {
     "FASTK": "^",
     "Jellyfish": "P",
     "Gerbil": "*",
+    "Kaarme": "X",
 }
 PALETTE = {
     "KFC": "tab:blue",
@@ -24,6 +25,7 @@ PALETTE = {
     "FASTK": "tab:red",
     "Jellyfish": "tab:purple",
     "Gerbil": "tab:orange",
+    "Kaarme": "tab:brown",
 }
 LABEL = {t: t for t in MARKERS} | {
     "time": "Construction time (in s)",

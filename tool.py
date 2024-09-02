@@ -15,15 +15,6 @@ class Tool:
         self.postprocess = postprocess
         self.log_dir = log_dir
 
-    def name(self):
-        return self.name
-
-    def log_dir(self):
-        return self.log_dir
-
-    def set_log_dir(self, log_dir):
-        self.log_dir = log_dir
-
     def log(self, input_file, time, memory, **params):
         os.makedirs(self.log_dir, exist_ok=True)
         name = basename(input_file)

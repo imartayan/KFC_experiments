@@ -73,10 +73,22 @@ def gerbil_cmd(fasta, **params):
 GERBIL = Tool("Gerbil", gerbil_cmd)
 
 
+def kaarme_cmd(fasta, **params):
+    k = select_param("k", params, 31)
+    t = select_param("threads", params, 1)
+    a = select_param("threshold", params, 2)
+    s = select_param("hash_table_size", params, 100000000)
+    out = f"out/{basename(fasta)}.kaarme"
+    return [f"./kaarme/build/kaarme -a {a} -t {t} {fasta} {k} -s {s} -o {out}"]
+
+
+KAARME = Tool("Kaarme", kaarme_cmd)
+
 TOOLS = [
     KFC,
     KMC,
     FASTK,
     # JELLYFISH,
     # GERBIL,
+    # KAARME,
 ]

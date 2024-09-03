@@ -19,8 +19,9 @@ def kmc_cmd(fasta, **params):
         return None
     t = select_param("threads", params, 1)
     ci = select_param("threshold", params, 2)
+    filetype = "-fa" if (".fa" in fasta or ".fasta" in fasta) else "-fq"
     out = f"out/{basename(fasta)}"
-    return [f"./KMC/kmc -fa -k{k} -t{t} -ci{ci} {fasta} {out} tmp"]
+    return [f"./KMC/kmc {filetype} -k{k} -t{t} -ci{ci} {fasta} {out} tmp"]
 
 
 KMC = Tool("KMC", kmc_cmd)

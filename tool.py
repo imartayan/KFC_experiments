@@ -19,10 +19,11 @@ class Tool:
         os.makedirs(self.log_dir, exist_ok=True)
         name = basename(input_file)
         size = filesize(input_file)
-        attrs = [self.name, name, str(size // 10**6)] + [
-            f"{k}{v}" for (k, v) in params.items()
-        ]
-        json_file = f"{self.log_dir}/{"_".join(attrs)}.json"
+        attrs = "_".join(
+            [self.name, name, str(size // 10**6)]
+            + [f"{k}{v}" for (k, v) in params.items()]
+        )
+        json_file = f"{self.log_dir}/{attrs}.json"
         update_json(
             json_file,
             tool=self.name,

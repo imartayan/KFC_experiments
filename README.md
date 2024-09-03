@@ -22,7 +22,7 @@ bash install_all.sh
 
 If the installation fails, make sure you have the following packages installed on your machine:
 ```
-cmake gcc git make python3 python3-pandas python3-seaborn wget
+autoconf automake cmake gcc git libbz2 libcurl liblzma libssl make perl python3 python3-pandas python3-seaborn wget zlib
 ```
 On Debian-based distributions, you can install them with
 ```sh

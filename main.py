@@ -1,4 +1,13 @@
-from tools import TOOLS
+from tools import KFC, KMC, FASTK, JELLYFISH, GERBIL, KAARME
+
+TOOLS = [
+    KFC,
+    KMC,
+    FASTK,
+    # JELLYFISH,
+    # GERBIL,
+    # KAARME,
+]
 
 MAIN_FILE = "reads.fa"
 

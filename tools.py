@@ -83,12 +83,3 @@ def kaarme_cmd(fasta, **params):
 
 
 KAARME = Tool("Kaarme", kaarme_cmd)
-
-TOOLS = [
-    KFC,
-    KMC,
-    FASTK,
-    # JELLYFISH,
-    # GERBIL,
-    # KAARME,
-]

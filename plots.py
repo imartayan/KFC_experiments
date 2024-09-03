@@ -1,5 +1,4 @@
-from tools import TOOLS
-from main import MAIN_FILE, DEFAULT_K
+from main import TOOLS, MAIN_FILE, DEFAULT_K
 import os
 import json
 import pandas as pd

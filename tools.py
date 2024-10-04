@@ -16,9 +16,10 @@ def kmc_cmd(fasta, **params):
     k = select_param("k", params, 31)
     t = select_param("threads", params, 1)
     ci = select_param("threshold", params, 2)
+    m = select_param("max_ram", params, 12)
     filetype = "-fa" if (".fa" in fasta or ".fasta" in fasta) else "-fq"
     out = f"out/{basename(fasta)}"
-    return [f"./KMC/kmc {filetype} -k{k} -t{t} -ci{ci} {fasta} {out} tmp"]
+    return [f"./KMC/kmc {filetype} -k{k} -ci{ci} -t{t} -m{m} {fasta} {out} tmp"]
 
 
 KMC = Tool("KMC", kmc_cmd)
@@ -28,8 +29,9 @@ def fastk_cmd(fasta, **params):
     k = select_param("k", params, 31)
     T = select_param("threads", params, 1)
     t = select_param("threshold", params, 2)
+    M = select_param("max_ram", params, 12)
     out = f"out/{basename(fasta)}"
-    return [f"./FASTK/FastK -v -k{k} -t{t} -T{T} {fasta} -N{out}"]
+    return [f"./FASTK/FastK -v -k{k} -t{t} -T{T} -M{M} {fasta} -N{out}"]
 
 
 FASTK = Tool("FASTK", fastk_cmd)

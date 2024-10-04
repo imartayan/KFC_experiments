@@ -14,9 +14,6 @@ KFC = Tool("KFC", kfc_cmd)
 
 def kmc_cmd(fasta, **params):
     k = select_param("k", params, 31)
-    if k > 256:
-        print("KMC requires k ≤ 256")
-        return None
     t = select_param("threads", params, 1)
     ci = select_param("threshold", params, 2)
     filetype = "-fa" if (".fa" in fasta or ".fasta" in fasta) else "-fq"
@@ -40,9 +37,6 @@ FASTK = Tool("FASTK", fastk_cmd)
 
 def jellyfish_cmd(fasta, **params):
     k = select_param("k", params, 31)
-    if k > 64:
-        print("Jellyfish requires k ≤ 64")
-        return None
     t = select_param("threads", params, 1)
     s_bf = select_param("bloom_filter_size", params, "1G")
     s_ht = select_param("hash_table_size", params, "10M")

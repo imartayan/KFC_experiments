@@ -9,5 +9,5 @@ set -x
 
 cd KFC
 git pull
-RUSTFLAGS="-C target-cpu=native" cargo build --release
+RUSTFLAGS="-C target-cpu=native" cargo +nightly build --release -F nightly
 cp target/release/kfc .

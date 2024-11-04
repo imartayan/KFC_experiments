@@ -36,18 +36,43 @@ On MacOS, you will first need to increase the limit of temporary files to run KM
 ulimit -n 2048
 ```
 
-You can run all the experiments with
+The experiment script (experiment.py) contains a total of 3 subcommands {onk, onc, plot}.
+Doing
 ```sh
-python3 main.py
+python experiment.py -h
+usage: experiment.py [-h] __default {onk,onc,plot} ...
+
+positional arguments:
+  __default
+  {onk,onc,plot}
+    onk           Run experiments on given dataset by changing k
+    onc           Run experiments by changing coverage of the given dataset
+    plot          Plot set of experiments
+
+options:
+  -h, --help      show this help message and exit
 ```
 
-This will write the results of the experiments in the `logs` folder, please leave it untouched if you want to generate plots with them.
+An example of testing a dataset "input.fasta.gz" for multiple, user-defined k's is given below:
+```sh
+python experiment.py -i input.fasta.gz -o output/folder/ -g log/folder/ -k 31 63 127 255 -m 27 -r 2 -p 1 -t 16 -x 128 -d tmp/folder/
+```
+
+It is also possible to test multiple k's for a given range of values:
+```sh
+python experiment.py -i input.fasta.gz -o output/folder/ -g log/folder/ -k 31 10 -K 255 -m 27 -r 2 -p 1 -t 16 -x 128 -d tmp/folder/
+```
+
+The above command will test all k-mer lengths from 31 (included) to 255 (excluded) by incrementing k by 10 at each iteration. 
+
+Benchmark results are stored in `log/folder/` whereas `output/folder/` stores command outputs (k-mer counting tables).
 
 ## Generating the plots
 
 You can generate all the plots with
 ```sh
-python3 plots.py
+python3 plots.py -g log/folder/ -i input.fasta.gz -o plots/folder/
 ```
-
-This will save the plots in the `plots` folder.
+`log/folder/` is the previous log directory.
+Option `-i input.fasta.gz` is necessary because the name of the input file (absolute path) is used as key to find its experiments. 
+This will save the plots in the `plots/folder/` folder.

@@ -1,6 +1,6 @@
 # KFC experiments
 
-Experiments on hyper-*k*-mers
+Experiments on [KFC](https://github.com/lrobidou/KFC), a *k*-mer counting tool based on hyper-*k*-mers
 
 You can clone the repository and its submodules with
 ```sh
@@ -71,7 +71,7 @@ Benchmark results are stored in `log/folder/` whereas `output/folder/` stores co
 
 You can generate all the plots with
 ```sh
-python3 plots.py -g log/folder/ -i input.fasta.gz -o plots/folder/
+python3 experiment.py plot -g log/folder/ -i input.fasta.gz -o plots/folder/
 ```
 `log/folder/` is the previous log directory.
 Option `-i input.fasta.gz` is necessary because the name of the input file (absolute path) is used as key to find its experiments. 

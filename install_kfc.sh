@@ -2,7 +2,7 @@
 set -euo pipefail
 
 if [ ! -d "KFC" ]; then
-    git clone git@github.com:lrobidou/KFC.git
+    git clone https://github.com/lrobidou/KFC.git
 fi
 
 set -x

@@ -134,45 +134,90 @@ def plot_main(args):
     data["filesize"] /= 1_000_000
     data = data.sort_values(by=["filesize", "k"])
 
-    fig, ax = plt.subplots()
-    sns.lineplot(
-        ax=ax,
-        data=data[data["filename"] == args.input_file],
-        x="k",
-        y="time",
-        hue="tool",
-        style="tool",
-        markersize=args.marker_size,
-        alpha=args.alpha,
-        dashes=False,
-        palette=PALETTE,
-        markers=MARKERS,
-    )
-    x_left, x_right = ax.get_xlim()
-    y_low, y_high = ax.get_ylim()
-    ax.set_aspect(abs((x_right-x_left)/(y_low-y_high))*args.ratio)
-    ax.set(xlabel="$k$", ylabel="Time (in s)", title="Time vs k")
-    plt.savefig((out_dir / "plot_time_vs_k").with_suffix('.' + args.format), dpi=200, bbox_inches="tight", format=args.format)
+    if (args.subplot):
+        fig, axes = plt.subplots(1, 2)
+        fig.set_figheight(args.width * args.aspect_ratio)
+        fig.set_figwidth(args.width)
+        sns.lineplot(
+            ax=axes[0],
+            data=data[data["filename"].str.endswith(args.input_file)],
+            x="k",
+            y="memory",
+            hue="tool",
+            style="tool",
+            markersize=args.marker_size,
+            alpha=args.alpha,
+            dashes=False,
+            palette=PALETTE,
+            markers=MARKERS,
+        )
+        axes[0].set_yscale("log", base=2)
+        axes[0].get_legend().remove()
+        axes[0].set(xlabel="$k$", ylabel="Memory usage (MB)", title="Memory vs k")
 
-    fig, ax = plt.subplots()
-    sns.lineplot(
-        ax=ax,
-        data=data[data["filename"] == args.input_file],
-        x="k",
-        y="memory",
-        hue="tool",
-        style="tool",
-        markersize=args.marker_size,
-        alpha=args.alpha,
-        dashes=False,
-        palette=PALETTE,
-        markers=MARKERS,
-    )
-    x_left, x_right = ax.get_xlim()
-    y_low, y_high = ax.get_ylim()
-    ax.set_aspect(abs((x_right-x_left)/(y_low-y_high))*args.ratio)
-    ax.set(xlabel="$k$", ylabel="Memory usage (in MB)", title="Memory vs k")
-    plt.savefig((out_dir / "plot_mem_vs_k").with_suffix('.' + args.format), dpi=200, bbox_inches="tight", format=args.format)
+        sns.lineplot(
+            ax=axes[1],
+            data=data[data["filename"].str.endswith(args.input_file)],
+            x="k",
+            y="time",
+            hue="tool",
+            style="tool",
+            markersize=args.marker_size,
+            alpha=args.alpha,
+            dashes=False,
+            palette=PALETTE,
+            markers=MARKERS,
+        )
+        axes[1].set_yscale("log", base=2)
+        axes[1].get_legend().remove()
+        axes[1].set(xlabel="$k$", ylabel="Time (s)", title="Time vs k")
+        
+        handles, labels = axes[1].get_legend_handles_labels()
+        fig.legend(handles, labels, loc="lower center", fancybox=True, shadow=True, ncol=len(labels), bbox_to_anchor=(0.52, -0.08)) # bbox_to_anchor=(1, 0.5)
+        fig.tight_layout()
+        plt.savefig((out_dir / "plot_memory_time_vs_k").with_suffix('.' + args.format), dpi=200, bbox_inches="tight", format=args.format)
+    else:
+        fig, ax = plt.subplots()
+        sns.lineplot(
+            ax=ax,
+            data=data[data["filename"].str.endswith(args.input_file)],
+            x="k",
+            y="time",
+            hue="tool",
+            style="tool",
+            markersize=args.marker_size,
+            alpha=args.alpha,
+            dashes=False,
+            palette=PALETTE,
+            markers=MARKERS,
+        )
+        sns.move_legend(ax, "upper left", bbox_to_anchor=(1, 1))
+        x_left, x_right = ax.get_xlim()
+        y_low, y_high = ax.get_ylim()
+        ax.set_aspect(abs((x_right-x_left)/(y_low-y_high)) * args.aspect_ratio)
+        ax.set(xlabel="$k$", ylabel="Time (in s)", title="Time vs k")
+        plt.savefig((out_dir / "plot_time_vs_k").with_suffix('.' + args.format), dpi=200, bbox_inches="tight", format=args.format)
+
+        fig, ax = plt.subplots()
+        sns.lineplot(
+            ax=ax,
+            data=data[data["filename"].str.endswith(args.input_file)],
+            x="k",
+            y="memory",
+            hue="tool",
+            style="tool",
+            markersize=args.marker_size,
+            alpha=args.alpha,
+            dashes=False,
+            palette=PALETTE,
+            markers=MARKERS,
+        )
+        sns.move_legend(ax, "upper left", bbox_to_anchor=(1, 1))
+        x_left, x_right = ax.get_xlim()
+        y_low, y_high = ax.get_ylim()
+        ax.set_aspect(abs((x_right-x_left)/(y_low-y_high)) * args.aspect_ratio)
+        ax.set(xlabel="$k$", ylabel="Memory usage (in MB)", title="Memory vs k")
+        plt.savefig((out_dir / "plot_mem_vs_k").with_suffix('.' + args.format), dpi=200, bbox_inches="tight", format=args.format)
 
     k = args.kmer_length
     if (k):
@@ -186,7 +231,7 @@ def plot_main(args):
         )
         x_left, x_right = ax.get_xlim()
         y_low, y_high = ax.get_ylim()
-        ax.set_aspect(abs((x_right-x_left)/(y_low-y_high))*args.ratio)
+        ax.set_aspect(abs((x_right-x_left)/(y_low-y_high)) * args.aspect_ratio)
         ax.set(xlabel="Input size (in Mb)", ylabel="Time (in s)")
         plt.savefig((out_dir / "plot_time_dataset").with_suffix('.' + args.format), dpi=200, bbox_inches="tight", format=args.format)
 
@@ -200,7 +245,7 @@ def plot_main(args):
         )
         x_left, x_right = ax.get_xlim()
         y_low, y_high = ax.get_ylim()
-        ax.set_aspect(abs((x_right-x_left)/(y_low-y_high))*args.ratio)
+        ax.set_aspect(abs((x_right-x_left)/(y_low-y_high)) * args.aspect_ratio)
         ax.set(xlabel="Input size (in Mb)", ylabel="Memory usage (in MB)")
         plt.savefig((out_dir / "plot_mem_dataset").with_suffix('.' + args.format), dpi=200, bbox_inches="tight", format=args.format)
 
@@ -241,14 +286,16 @@ if __name__ == "__main__":
     parser_onc.add_argument("-x", "--max-ram", help="Maximum RAM in GB [16]", type=int, default=16)
     parser_onc.add_argument("-d", "--tmp-dir", help="temporary directory [.]", type=str, default=".")
     parser_onc.add_argument("-e", "--timeout", help="timeout for the commands [None]", type=int, default=None)
-    parser_onc.add_argument("--tool-indexes", help=f"list of indexes corresponding to available tools to be tested (all by default)\n\t TOOLS = {TOOLS}", type=int, nargs='+', default=[idx for idx in range(len(TOOLS))])
+    parser_onc.add_argument("--tool-indexes", help=f"list of indexes corresponding to available tools to be tested (all by default)\n\t TOOLS = {[t.name for t in TOOLS]}", type=int, nargs='+', default=[idx for idx in range(len(TOOLS))])
 
     parser_plot = subparsers.add_parser("plot", help="Plot set of experiments")
     parser_plot.add_argument("-i", "--input-file", help="name of input file analyzed", type=str, required = True)
     parser_plot.add_argument("-o", "--out-dir", help="folder where to store the plots", type=str, required=True)
     parser_plot.add_argument("-g", "--log-dir", help="folder where the log files are stored", type=str, required=True)
+    parser_plot.add_argument("-p", "--subplot", help="put memory and time plots in the same image, with one shared legend", action="store_true", default=False)
     parser_plot.add_argument("-k", "--kmer-length", help="specific k-mer length to plot", type=int, required=False)
-    parser_plot.add_argument("-r", "--ratio", help="aspect ratio defined as height/length of the plots [0.5]", type=float, default=0.5)
+    parser_plot.add_argument("-r", "--aspect-ratio", help="aspect ratio defined as height/length of the plots [0.5]", type=float, default=0.3)
+    parser_plot.add_argument("-w", "--width", help="width of the figure, if working with subplots this is the width of the whole figure", type=int, default=10)
     parser_plot.add_argument("-a", "--alpha", help="alpha (transparency), 1 for solid lines, 0 for invisible lines [0.8]", type=float, default=0.8)
     parser_plot.add_argument("-s", "--marker-size", help="marker size [5]", type=int, default=5)
     parser_plot.add_argument("-f", "--format", help=f"output format [pdf] {PLOT_FORMATS}", type=str, default="pdf")

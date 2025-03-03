@@ -32,7 +32,7 @@ def kmc_cmd(fasta: os.PathLike,
             **params
             ) -> str:
     def kmc_filetype_option(filename: str) -> str:
-        if ".fa" in filename or ".fasta" in filename: return "-fa"
+        if ".fa" in filename or ".fasta" in filename: return "-fm"
         elif ".fq" in filename or ".fastq" in filename: return "-fq"
         else: raise RuntimeError("[KMC] unrecognized file format")
 

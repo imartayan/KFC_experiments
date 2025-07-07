@@ -1,0 +1,1 @@
+{"tool": "FASTK", "time": 529.52, "memory": 371745896.0, "filename": "../datasets/zymo/SRR13128014.fasta", "filesize": 18331202775, "k": 621, "m": 31, "threshold": 2, "threads": 64, "max_ram": 1000}

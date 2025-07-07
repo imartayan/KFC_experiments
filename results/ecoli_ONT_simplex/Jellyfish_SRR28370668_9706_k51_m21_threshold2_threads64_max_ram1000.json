@@ -1,0 +1,1 @@
+{"tool": "Jellyfish", "time": 299.02, "memory": 26380664.0, "filename": "../datasets/ecoli_ONT_simplex/SRR28370668.fasta", "filesize": 9706025991, "k": 51, "m": 21, "threshold": 2, "threads": 64, "max_ram": 1000}

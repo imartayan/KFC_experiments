@@ -1,0 +1,1 @@
+{"tool": "KMC", "time": 120.93, "memory": 687223920.0, "filename": "../datasets/ecoli_ONT_simplex/SRR28370668.fasta", "filesize": 9706025991, "k": 471, "m": 31, "threshold": 2, "threads": 64, "max_ram": 1000}

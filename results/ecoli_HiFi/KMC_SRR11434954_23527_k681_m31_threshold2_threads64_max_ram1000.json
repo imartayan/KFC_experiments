@@ -1,0 +1,1 @@
+{"tool": "KMC", "time": 3548.08, "memory": 976645300.0, "filename": "../datasets/ecoli_HiFi/SRR11434954.fasta", "filesize": 23527040681, "k": 681, "m": 31, "threshold": 2, "threads": 64, "max_ram": 1000}

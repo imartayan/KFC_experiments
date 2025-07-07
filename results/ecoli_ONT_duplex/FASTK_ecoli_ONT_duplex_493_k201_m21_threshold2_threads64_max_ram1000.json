@@ -1,0 +1,1 @@
+{"tool": "FASTK", "time": 5.28, "memory": 8311048.0, "filename": "../datasets/ecoli_ONT_duplex/ecoli_ONT_duplex.fasta", "filesize": 493537115, "k": 201, "m": 21, "threshold": 2, "threads": 64, "max_ram": 1000}

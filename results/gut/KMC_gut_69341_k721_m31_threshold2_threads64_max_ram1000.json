@@ -1,0 +1,1 @@
+{"tool": "KMC", "time": 2009.74, "memory": 975266560.0, "filename": "../datasets/gut/gut.fasta", "filesize": 69341987587, "k": 721, "m": 31, "threshold": 2, "threads": 64, "max_ram": 1000}

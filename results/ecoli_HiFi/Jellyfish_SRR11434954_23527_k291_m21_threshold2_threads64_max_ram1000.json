@@ -1,0 +1,1 @@
+{"tool": "Jellyfish", "time": 1801.73, "memory": 606365124.0, "filename": "../datasets/ecoli_HiFi/SRR11434954.fasta", "filesize": 23527040681, "k": 291, "m": 21, "threshold": 2, "threads": 64, "max_ram": 1000}

@@ -1,0 +1,1 @@
+{"tool": "KMC", "time": 23.47, "memory": 63431284.0, "filename": "../datasets/ecoli_ONT_duplex/ecoli_ONT_duplex.fasta", "filesize": 493537115, "k": 861, "m": 31, "threshold": 2, "threads": 64, "max_ram": 1000}

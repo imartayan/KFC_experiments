@@ -1,0 +1,1 @@
+{"tool": "KFC", "time": 353.33, "memory": 50059548.0, "filename": "../datasets/gut/gut.fasta", "filesize": 69341987587, "k": 1021, "m": 31, "threshold": 2, "threads": 64, "max_ram": 1000}

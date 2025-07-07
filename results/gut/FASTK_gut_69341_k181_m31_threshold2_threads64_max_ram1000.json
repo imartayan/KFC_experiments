@@ -1,0 +1,1 @@
+{"tool": "FASTK", "time": 1070.91, "memory": 268649204.0, "filename": "../datasets/gut/gut.fasta", "filesize": 69341987587, "k": 181, "m": 31, "threshold": 2, "threads": 64, "max_ram": 1000}

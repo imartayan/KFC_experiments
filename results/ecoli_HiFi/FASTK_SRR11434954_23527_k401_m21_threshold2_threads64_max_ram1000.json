@@ -1,0 +1,1 @@
+{"tool": "FASTK", "time": 744.26, "memory": 341567284.0, "filename": "../datasets/ecoli_HiFi/SRR11434954.fasta", "filesize": 23527040681, "k": 401, "m": 21, "threshold": 2, "threads": 64, "max_ram": 1000}

@@ -1,0 +1,1 @@
+{"tool": "Jellyfish", "time": 1177.15, "memory": 336288768.0, "filename": "../datasets/zymo/SRR13128014.fasta", "filesize": 18331202775, "k": 321, "m": 31, "threshold": 2, "threads": 64, "max_ram": 1000}

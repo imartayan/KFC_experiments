@@ -1,0 +1,1 @@
+{"tool": "KFC", "time": 1098.22, "memory": 25358836.0, "filename": "../datasets/ecoli_HiFi/SRR11434954.fasta", "filesize": 23527040681, "k": 251, "m": 21, "threshold": 2, "threads": 64, "max_ram": 1000}

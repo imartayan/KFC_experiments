@@ -1,0 +1,1 @@
+{"tool": "Jellyfish", "time": 3434.44, "memory": 960986336.0, "filename": "../datasets/gut/gut.fasta", "filesize": 69341987587, "k": 121, "m": 31, "threshold": 2, "threads": 64, "max_ram": 1000}

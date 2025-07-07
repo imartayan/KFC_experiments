@@ -1,0 +1,1 @@
+{"tool": "Jellyfish", "time": 38.08, "memory": 7346440.0, "filename": "../datasets/ecoli_ONT_duplex/ecoli_ONT_duplex.fasta", "filesize": 493537115, "k": 871, "m": 21, "threshold": 2, "threads": 64, "max_ram": 1000}

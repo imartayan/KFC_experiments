@@ -1,0 +1,1 @@
+{"tool": "KFC", "time": 7.04, "memory": 862284.0, "filename": "../datasets/ecoli_ONT_duplex/ecoli_ONT_duplex.fasta", "filesize": 493537115, "k": 151, "m": 21, "threshold": 2, "threads": 64, "max_ram": 1000}

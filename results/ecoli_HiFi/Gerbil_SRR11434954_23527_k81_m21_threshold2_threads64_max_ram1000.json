@@ -1,0 +1,1 @@
+{"tool": "Gerbil", "time": 86.83, "memory": 7658360.0, "filename": "../datasets/ecoli_HiFi/SRR11434954.fasta", "filesize": 23527040681, "k": 81, "m": 21, "threshold": 2, "threads": 64, "max_ram": 1000}

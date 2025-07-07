@@ -1,0 +1,1 @@
+{"tool": "KFC", "time": 2007.77, "memory": 17385360.0, "filename": "../datasets/ecoli_ONT_simplex/SRR28370668.fasta", "filesize": 9706025991, "k": 241, "m": 21, "threshold": 2, "threads": 64, "max_ram": 1000}
